@@ -16,7 +16,10 @@ const Footer = () => {
                 <h5>Section</h5>
                 <ul className="nav flex-column">
                   <li className="nav-item mb-2">
-                    <NavLink to="/" className="nav-link p-0 text-muted">
+                    <NavLink
+                      to="/Trend-Shop"
+                      className="nav-link p-0 text-muted"
+                    >
                       Home
                     </NavLink>
                   </li>

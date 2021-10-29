@@ -15,7 +15,7 @@ const Navbar = () => {
           <div className="container" style={{ color: "white" }}>
             <NavLink
               className="navbar-brand fw-bold fs-4"
-              to="/"
+              to="/Trend-Shop"
               style={{ color: "white" }}
             >
               TREND-SHOP
@@ -29,7 +29,7 @@ const Navbar = () => {
                   <NavLink
                     className="nav-link active"
                     aria-current="page"
-                    to="/"
+                    to="/Trend-Shop"
                     style={{ color: "white" }}
                   >
                     Home

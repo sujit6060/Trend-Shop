@@ -16,7 +16,7 @@ function App() {
       <Router>
         <Navbar />
         <Switch>
-          <Route exact path="/">
+          <Route exact path="/Trend-Shop">
             <Home />{" "}
           </Route>
           <Route exact path="/products">
