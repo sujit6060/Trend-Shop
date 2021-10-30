@@ -7,7 +7,7 @@ const Home = () => {
       <div className="hero">
         <div className="card bg-dark text-white border-0">
           <img
-            src="/assets/bg.jpg"
+            src="https://image.freepik.com/free-photo/beautiful-woman-black-friday-concept-with-copy-space_23-2148674185.jpg"
             className="card-img"
             alt="Background"
             height="550px"
@@ -16,7 +16,7 @@ const Home = () => {
             <div className="container ">
               <h5
                 className="card-title display-3 fw-bolder mb-2"
-                style={{ paddingLeft: "400px", paddingTop: "350px" }}
+                style={{ paddingLeft: "400px", paddingTop: "200px" }}
               >
                 NEW SEASON ARRIVAL
               </h5>

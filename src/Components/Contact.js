@@ -13,7 +13,7 @@ const Contact = () => {
         <div className="row">
           <div className="col-md-5 justify-content-center">
             <img
-              src="/assets/contact.jpg"
+              src="https://image.freepik.com/free-photo/chalkboard-with-blue-envelopes-drawn-hand_1205-996.jpg"
               alt="Contact"
               width="340px"
               height="340px"
