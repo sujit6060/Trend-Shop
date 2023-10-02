@@ -28,7 +28,7 @@ const Contact = () => {
                 <input
                   type="text"
                   className="form-control"
-                  placeholder="Sharad Pawar"
+                  placeholder="full name"
                 />
               </div>
               <div className="mb-3">

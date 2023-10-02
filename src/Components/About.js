@@ -8,22 +8,40 @@ const About = () => {
           <h2 style={{ textAlign: "center" }}>About Us</h2>
           <br></br>
           <h4>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat.
-          </h4>
+          Welcome to Trend Shop - Where Fashion Meets Style!
+
+    </h4>
           <br></br>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat
-            non proident, sunt in culpa qui officia deserunt mollit anim id est
-            laborum consectetur adipiscing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-            veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-            ea commodo consequat.
+          Our Story
+At Trend Shop, fashion isn't just a passion; it's our way of life. Our journey began in [Year] when a group of fashion enthusiasts decided to turn their love for style into a destination where everyone can discover the latest trends, express their individuality, and feel confident in their choices.
+
+Our Mission
+Empowering Your Style Journey: Our mission is to empower individuals to express their unique style with confidence. We believe that fashion should be inclusive, accessible, and a source of inspiration for all.
+
+What Sets Us Apart
+Curated Selection: We curate a carefully selected collection of the latest trends, ensuring you have access to high-quality fashion that stands out.
+Our Story
+At Trend Shop, fashion isn't just a passion; it's our way of life. Our journey began in [Year] when a group of fashion enthusiasts decided to turn their love for style into a destination where everyone can discover the latest trends, express their individuality, and feel confident in their choices.
+
+Our Mission
+Empowering Your Style Journey: Our mission is to empower individuals to express their unique style with confidence. We believe that fashion should be inclusive, accessible, and a source of inspiration for all.
+
+What Sets Us Apart
+Curated Selection: We curate a carefully selected collection of the latest trends, ensuring you have access to high-quality fashion that stands out.
+
+Diverse Styles: From classic elegance to street style, our range covers a diverse spectrum of styles to cater to every taste.
+
+Sustainability: We're committed to sustainability. Our eco-friendly initiatives and ethical sourcing reflect our dedication to a better future.
+
+Customer-Centric: Your satisfaction is our priority. Our customer support team is here to assist you at every step of your shopping journey.
+      
+Diverse Styles: From classic elegance to street style, our range covers a diverse spFectrum of styles to cater to every taste.
+
+Sustainability: We're committed to sustainability. Our eco-friendly initiatives and ethical sourcing reflect our dedication to a better future.
+
+Customer-Centric: Your satisfaction is our priority. Our customer support team is here to assist you at every step of your shopping journey.
+      
           </p>
           <br></br>
           <button className="btn btn-outline-warning  w-25">
