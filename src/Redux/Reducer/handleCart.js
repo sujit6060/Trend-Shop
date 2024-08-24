@@ -1,21 +1,16 @@
-const cart = [];
+const initialState = [];
 
-const handleCart = (state = cart, action) => {
+// Reducer function for managing the cart state
+const handleCart = (state = initialState, action) => {
   switch (action.type) {
     case "ADDITEM":
       return [...state, action.payload];
 
-      break;
-
     case "DELITEM":
-      return (state = state.filter((x) => {
-        return x.id !== action.payload.id;
-      }));
-      break;
+      return state.filter((item) => item.id !== action.payload.id);
 
     default:
       return state;
-      break;
   }
 };
 
