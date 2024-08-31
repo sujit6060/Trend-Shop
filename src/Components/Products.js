@@ -24,23 +24,31 @@ const Products = () => {
       <div className="row">
         {products.map((product) => (
           <div className="col-md-3 mb-4" key={product.id}>
-            <div className="card h-100 text-center p-4">
+            <div
+              className="card h-100 text-center p-4 d-flex flex-column"
+              style={{ height: "400px" }}
+            >
               <img
                 src={product.image}
-                className="card-img-top"
+                className="card-img-top mb-3"
                 alt={product.title}
-                style={{ height: "250px", objectFit: "cover" }}
+                style={{
+                  height: "200px",
+                  objectFit: "contain",
+                }}
               />
-              <div className="card-body">
-                <h5 className="card-title">
+              <div className="card-body d-flex flex-column">
+                <h6 className="card-title mb-3" style={{ flexGrow: 1 }}>
                   {product.title.length > 12
-                    ? `${product.title.substring(0, 12)}...`
+                    ? `${product.title}`
                     : product.title}
-                </h5>
-                <p className="card-text fw-bold">Rs. {product.price * 70}</p>
+                </h6>
+                <p className="card-text fw-bold">
+                  Rs. {Math.ceil(product.price * 70)}
+                </p>
                 <NavLink
                   to={`/products/${product.id}`}
-                  className="btn btn-outline-danger"
+                  className="btn btn-outline-danger mt-auto"
                 >
                   Buy Now
                 </NavLink>

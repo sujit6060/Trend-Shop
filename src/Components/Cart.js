@@ -12,11 +12,15 @@ const Cart = () => {
   };
 
   const renderEmptyCart = () => (
-    <div className="px-4 my-5 bg-light rounded-3 py-5">
+    <div className="px-4 my-5 bg-light rounded-3 py-5 text-center">
       <div className="container py-4">
-        <div className="row justify-content-center">
-          <h3>Your Cart Is Empty</h3>
-        </div>
+        <h3>Your Cart Is Empty</h3>
+        <p className="lead">
+          Looks like you haven't added anything to your cart yet.
+        </p>
+        <NavLink to="/products" className="btn btn-primary mt-3">
+          Start Shopping
+        </NavLink>
       </div>
     </div>
   );
@@ -30,19 +34,34 @@ const Cart = () => {
             className="btn-close float-end"
             aria-label="Close"
           ></button>
-          <div className="row justify-content-center">
-            <div className="col-md-4">
+          <div className="row align-items-center">
+            <div className="col-md-3">
               <img
                 src={item.image}
                 alt={item.title}
-                width="200"
-                height="200"
+                width="150"
+                height="150"
                 className="img-fluid"
+                style={{ objectFit: "contain" }}
               />
             </div>
-            <div className="col-md-4">
-              <h3>{item.title}</h3>
-              <p className="lead fw-bolder">Rs. {item.price * 70}</p>
+            <div className="col-md-5">
+              <h5>{item.title}</h5>
+              <p className="text-muted">
+                Price: Rs. {Math.ceil(item.price * 70)}
+              </p>
+              <p className="text-muted">Quantity: 1</p>
+              <p className="lead fw-bold">
+                Total: Rs. {Math.ceil(item.price * 70)}
+              </p>
+            </div>
+            <div className="col-md-4 d-flex justify-content-end">
+              <button
+                onClick={() => handleRemoveItem(item)}
+                className="btn btn-danger"
+              >
+                Remove Item
+              </button>
             </div>
           </div>
         </div>
@@ -52,10 +71,7 @@ const Cart = () => {
   const renderCheckoutButton = () => (
     <div className="container">
       <div className="row">
-        <NavLink
-          to="/checkout"
-          className="btn btn-outline-dark mb-5 w-25 mx-auto"
-        >
+        <NavLink to="/checkout" className="btn btn-primary btn-lg w-50 mx-auto">
           Proceed To Checkout
         </NavLink>
       </div>

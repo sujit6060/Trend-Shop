@@ -20,7 +20,7 @@ const CheckOut = () => {
             : item.title}
         </h6>
       </div>
-      <span className="text-muted">Rs. {item.price * 70}</span>
+      <span className="text-muted">Rs. {Math.ceil(item.price * 70)}</span>
     </li>
   );
 
@@ -38,7 +38,7 @@ const CheckOut = () => {
             {cartItems.map(renderCartItem)}
             <li className="list-group-item d-flex justify-content-between">
               <span>Total (Rs)</span>
-              <strong>Rs. {total}</strong>
+              <strong>Rs. {Math.ceil(total)}</strong>
             </li>
           </ul>
 
