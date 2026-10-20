@@ -1,18 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import Login from "./Login";
 import Signup from "./Signup";
 
 const Navbar = () => {
-  const cartItemsCount = useSelector((state) => state.handleCart.length);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const cartItemsCount = useSelector((state) =>
+    state.handleCart.reduce((count, item) => count + (item.quantity || 1), 0)
+  );
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-black shadow-sm py-3">
+    <nav className="navbar navbar-expand-lg navbar-dark site-nav">
       <div className="container">
         <NavLink
-          className="navbar-brand fw-bold fs-4 text-white"
+          className="navbar-brand fw-bold"
           to="/Trend-Shop"
+          onClick={() => setMenuOpen(false)}
         >
           TREND-SHOP
         </NavLink>
@@ -20,44 +24,73 @@ const Navbar = () => {
         <button
           className="navbar-toggler"
           type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent"
-          aria-expanded="false"
+          aria-expanded={menuOpen}
           aria-label="Toggle navigation"
+          onClick={() => setMenuOpen((open) => !open)}
         >
           <span className="navbar-toggler-icon"></span>
         </button>
 
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+        <div
+          className={`collapse navbar-collapse${menuOpen ? " show" : ""}`}
+          id="navbarSupportedContent"
+        >
           <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
-            <li className="nav-item ms-4">
-              <NavLink className="nav-link text-white" to="/Trend-Shop">
+            <li className="nav-item">
+              <NavLink
+                exact
+                className="nav-link"
+                to="/Trend-Shop"
+                isActive={(match, location) =>
+                  location.pathname === "/" ||
+                  location.pathname === "/Trend-Shop"
+                }
+                onClick={() => setMenuOpen(false)}
+              >
                 Home
               </NavLink>
             </li>
-            <li className="nav-item ms-4">
-              <NavLink className="nav-link text-white" to="/products">
+            <li className="nav-item">
+              <NavLink
+                className="nav-link"
+                to="/products"
+                onClick={() => setMenuOpen(false)}
+              >
                 Products
               </NavLink>
             </li>
-            <li className="nav-item ms-4">
-              <NavLink className="nav-link text-white" to="/about">
+            <li className="nav-item">
+              <NavLink
+                className="nav-link"
+                to="/about"
+                onClick={() => setMenuOpen(false)}
+              >
                 About
               </NavLink>
             </li>
-            <li className="nav-item ms-4">
-              <NavLink className="nav-link text-white" to="/contact">
+            <li className="nav-item">
+              <NavLink
+                className="nav-link"
+                to="/contact"
+                onClick={() => setMenuOpen(false)}
+              >
                 Contact
               </NavLink>
             </li>
           </ul>
-          <div className="d-flex align-items-center">
+          <div className="d-flex align-items-center navbar-actions">
             <Login />
             <Signup />
-            <NavLink to="/cart" className="btn btn-outline-light ms-2">
-              <i className="fa fa-shopping-cart me-1"></i> Cart (
-              {cartItemsCount})
+            <NavLink
+              to="/cart"
+              className="nav-cart-btn"
+              aria-label={`Shopping bag, ${cartItemsCount} items`}
+              onClick={() => setMenuOpen(false)}
+            >
+              <i className="fa fa-shopping-bag" aria-hidden="true"></i>
+              <span>Bag</span>
+              <span className="cart-count">{cartItemsCount}</span>
             </NavLink>
           </div>
         </div>

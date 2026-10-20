@@ -1,11 +1,16 @@
 import React, { useMemo } from "react";
 import { useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
 
 const CheckOut = () => {
   const cartItems = useSelector((state) => state.handleCart);
 
   const total = useMemo(() => {
-    return cartItems.reduce((acc, item) => acc + item.price * 70, 0);
+    return cartItems.reduce(
+      (acc, item) =>
+        acc + Math.ceil(item.price * 70) * (item.quantity || 1),
+      0
+    );
   }, [cartItems]);
 
   const renderCartItem = (item) => (
@@ -20,45 +25,69 @@ const CheckOut = () => {
             : item.title}
         </h6>
       </div>
-      <span className="text-muted">Rs. {Math.ceil(item.price * 70)}</span>
+      <span className="text-muted">
+        {item.quantity || 1} × ₹ {Math.ceil(item.price * 70)}
+      </span>
     </li>
   );
 
   return (
-    <div className="container my-5">
-      <div className="row g-5">
-        <div className="col-md-5 col-lg-4 order-md-last">
-          <h4 className="d-flex justify-content-between align-items-center mb-3">
-            <span className="text-primary">Your cart</span>
-            <span className="badge bg-primary rounded-pill">
-              {cartItems.length}
+    <section className="container page-section checkout-page">
+      <p className="eyebrow">Almost yours</p>
+      <h1 className="page-title">Checkout</h1>
+      {cartItems.length === 0 ? (
+        <div className="content-panel p-4 p-md-5 text-center">
+          <h2 className="section-heading">Your bag is empty.</h2>
+          <p className="section-subtitle">
+            Add something you love before heading to checkout.
+          </p>
+          <NavLink to="/products" className="btn-premium mt-3">
+            Explore the collection
+          </NavLink>
+        </div>
+      ) : (
+      <div className="row g-4 g-lg-5 checkout-layout">
+        <div className="col-lg-5 col-xl-4 order-lg-last">
+          <aside className="checkout-panel p-4">
+          <h2 className="checkout-heading d-flex justify-content-between align-items-center mb-4">
+            <span>Your order</span>
+            <span className="checkout-count">
+              {cartItems.reduce(
+                (count, item) => count + (item.quantity || 1),
+                0
+              )}
             </span>
-          </h4>
-          <ul className="list-group mb-3">
+          </h2>
+          <ul className="list-unstyled checkout-items">
             {cartItems.map(renderCartItem)}
-            <li className="list-group-item d-flex justify-content-between">
-              <span>Total (Rs)</span>
-              <strong>Rs. {Math.ceil(total)}</strong>
+            <li className="checkout-total d-flex justify-content-between">
+              <span>Total</span>
+              <strong>₹ {Math.ceil(total)}</strong>
             </li>
           </ul>
 
-          <form className="card p-2">
+          <form className="checkout-promo p-2">
             <div className="input-group">
               <input
                 type="text"
                 className="form-control"
                 placeholder="Promo code"
               />
-              <button type="submit" className="btn btn-secondary">
+              <button type="submit" className="btn btn-outline-dark">
                 Redeem
               </button>
             </div>
           </form>
+          </aside>
         </div>
 
-        <div className="col-md-7 col-lg-8">
-          <h4 className="mb-3">Billing address</h4>
-          <form className="needs-validation" noValidate>
+        <div className="col-lg-7 col-xl-8">
+          <div className="checkout-panel p-4 p-md-5">
+          <h2 className="checkout-heading mb-1">Delivery details</h2>
+          <p className="section-subtitle mb-4">
+            Where should we send your order?
+          </p>
+          <form className="needs-validation checkout-form" noValidate>
             <div className="row g-3">
               <div className="col-sm-6">
                 <label htmlFor="firstName" className="form-label">
@@ -212,115 +241,26 @@ const CheckOut = () => {
 
             <hr className="my-4" />
 
-            <h4 className="mb-3">Payment</h4>
-
-            <div className="my-3">
-              <div className="form-check">
-                <input
-                  id="credit"
-                  name="paymentMethod"
-                  type="radio"
-                  className="form-check-input"
-                  required
-                />
-                <label className="form-check-label" htmlFor="credit">
-                  Credit card
-                </label>
-              </div>
-              <div className="form-check">
-                <input
-                  id="debit"
-                  name="paymentMethod"
-                  type="radio"
-                  className="form-check-input"
-                  required
-                />
-                <label className="form-check-label" htmlFor="debit">
-                  Debit card
-                </label>
-              </div>
-              <div className="form-check">
-                <input
-                  id="paypal"
-                  name="paymentMethod"
-                  type="radio"
-                  className="form-check-input"
-                  required
-                />
-                <label className="form-check-label" htmlFor="paypal">
-                  PayPal
-                </label>
-              </div>
-            </div>
-
-            <div className="row gy-3">
-              <div className="col-md-6">
-                <label htmlFor="cc-name" className="form-label">
-                  Name on card
-                </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="cc-name"
-                  required
-                />
-                <small className="text-muted">
-                  Full name as displayed on card
-                </small>
-                <div className="invalid-feedback">Name on card is required</div>
-              </div>
-
-              <div className="col-md-6">
-                <label htmlFor="cc-number" className="form-label">
-                  Credit card number
-                </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="cc-number"
-                  required
-                />
-                <div className="invalid-feedback">
-                  Credit card number is required
-                </div>
-              </div>
-
-              <div className="col-md-3">
-                <label htmlFor="cc-expiration" className="form-label">
-                  Expiration
-                </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="cc-expiration"
-                  required
-                />
-                <div className="invalid-feedback">Expiration date required</div>
-              </div>
-
-              <div className="col-md-3">
-                <label htmlFor="cc-cvv" className="form-label">
-                  CVV
-                </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="cc-cvv"
-                  required
-                />
-                <div className="invalid-feedback">Security code required</div>
-              </div>
+            <h2 className="checkout-heading mb-3">Payment</h2>
+            <div className="payment-demo-note mb-4">
+              <i className="fa fa-lock" aria-hidden="true"></i>
+              <p className="mb-0">
+                Payment is not enabled in this demo. No card details are
+                requested or collected.
+              </p>
             </div>
 
             <hr className="my-4" />
 
-            <button className="w-100 btn btn-primary btn-lg" type="submit">
-              Continue to checkout
+            <button className="btn-premium w-100" type="submit">
+              Review checkout
             </button>
           </form>
+          </div>
         </div>
       </div>
-    </div>
+      )}
+    </section>
   );
 };
 

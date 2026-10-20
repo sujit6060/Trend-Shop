@@ -10,24 +10,17 @@ import {
 const Footer = () => {
   const year = new Date().getFullYear();
   return (
-    <footer
-      style={{
-        backgroundColor: "#343a40",
-        color: "#adb5bd",
-        paddingTop: "40px",
-        paddingBottom: "20px",
-      }}
-    >
+    <footer className="site-footer">
       <div className="container">
         <div className="row">
-          <div className="col-md-4">
+          <div className="col-md-4 footer-column">
             <h5>About TREND_SHOP</h5>
             <p>
               TREND_SHOP offers a curated selection of top-quality products that
               keep you in style. Shop with us for the latest trends.
             </p>
           </div>
-          <div className="col-md-4">
+          <div className="col-md-4 footer-column">
             <h5>Quick Links</h5>
             <ul className="nav flex-column">
               <li className="nav-item mb-2">
@@ -46,8 +39,8 @@ const Footer = () => {
                 </NavLink>
               </li>
               <li className="nav-item mb-2">
-                <NavLink to="/faqs" className="nav-link p-0 text-muted">
-                  FAQs
+                <NavLink to="/contact" className="nav-link p-0 text-muted">
+                  FAQs & Contact
                 </NavLink>
               </li>
               <li className="nav-item mb-2">
@@ -57,7 +50,7 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-          <div className="col-md-4">
+          <div className="col-md-4 footer-column">
             <h5>Subscribe to our newsletter</h5>
             <p>Get the latest updates and offers.</p>
             <form className="d-flex w-100 gap-2">
@@ -90,7 +83,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <div className="d-flex justify-content-center py-3 my-3 fw-bold border-top text-muted">
+        <div className="d-flex justify-content-center footer-bottom">
           <p className="mb-0">© {year} TREND_SHOP. Inc. All rights reserved.</p>
         </div>
       </div>

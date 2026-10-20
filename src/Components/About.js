@@ -1,15 +1,17 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 const About = () => {
   return (
-    <div className="container my-5">
+    <section className="container page-section">
       <div className="row justify-content-center">
-        <div className="col-lg-8">
-          <h2 className="text-center">About Us</h2>
-          <p className="mt-4">
-            <strong>Welcome to Trend Shop - Where Fashion Meets Style!</strong>
+        <div className="col-lg-8 content-panel p-4 p-md-5">
+          <p className="eyebrow">A little about us</p>
+          <h1 className="page-title">Style, made personal.</h1>
+          <p className="lead mt-4">
+            <strong>Welcome to Trend Shop — where fashion meets style.</strong>
           </p>
-          <h4>Our Story</h4>
+          <h2 className="h4 mt-5">Our Story</h2>
           <p>
             At Trend Shop, fashion isn't just a passion; it's our way of life.
             Our journey began in 2020 when a group of fashion enthusiasts
@@ -18,7 +20,7 @@ const About = () => {
             individuality, and feel confident in their choices.
           </p>
 
-          <h4>Our Mission</h4>
+          <h2 className="h4 mt-4">Our Mission</h2>
           <p>
             Empowering Your Style Journey: Our mission is to empower individuals
             to express their unique style with confidence. We believe that
@@ -26,7 +28,7 @@ const About = () => {
             for all.
           </p>
 
-          <h4>What Sets Us Apart</h4>
+          <h2 className="h4 mt-4">What Sets Us Apart</h2>
           <ul>
             <li>
               <strong>Curated Selection:</strong> We carefully curate a
@@ -50,14 +52,14 @@ const About = () => {
             </li>
           </ul>
 
-          <div className="text-center mt-4">
-            <button className="btn btn-outline-warning w-50">
+          <div className="mt-4">
+            <NavLink to="/contact" className="btn-premium">
               Get in Touch
-            </button>
+            </NavLink>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

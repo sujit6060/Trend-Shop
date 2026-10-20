@@ -11,79 +11,66 @@ const Cart = () => {
     dispatch(delcart(item));
   };
 
-  const renderEmptyCart = () => (
-    <div className="px-4 my-5 bg-light rounded-3 py-5 text-center">
-      <div className="container py-4">
-        <h3>Your Cart Is Empty</h3>
-        <p className="lead">
-          Looks like you haven't added anything to your cart yet.
-        </p>
-        <NavLink to="/products" className="btn btn-primary mt-3">
-          Start Shopping
-        </NavLink>
-      </div>
-    </div>
-  );
-
   const renderCartItems = () =>
     cartItems.map((item) => (
-      <div className="px-4 my-5 bg-light rounded-3" key={item.id}>
-        <div className="container py-4">
-          <button
-            onClick={() => handleRemoveItem(item)}
-            className="btn-close float-end"
-            aria-label="Close"
-          ></button>
-          <div className="row align-items-center">
-            <div className="col-md-3">
-              <img
-                src={item.image}
-                alt={item.title}
-                width="150"
-                height="150"
-                className="img-fluid"
-                style={{ objectFit: "contain" }}
-              />
-            </div>
-            <div className="col-md-5">
-              <h5>{item.title}</h5>
-              <p className="text-muted">
-                Price: Rs. {Math.ceil(item.price * 70)}
-              </p>
-              <p className="text-muted">Quantity: 1</p>
-              <p className="lead fw-bold">
-                Total: Rs. {Math.ceil(item.price * 70)}
-              </p>
-            </div>
-            <div className="col-md-4 d-flex justify-content-end">
-              <button
-                onClick={() => handleRemoveItem(item)}
-                className="btn btn-danger"
-              >
-                Remove Item
-              </button>
+      <article className="cart-item p-3 p-md-4 mb-3" key={item.id}>
+        <div className="row align-items-center g-3">
+          <div className="col-4 col-md-2">
+            <div className="product-image-wrap cart-product-image">
+              <img src={item.image} alt={item.title} className="product-image" />
             </div>
           </div>
+          <div className="col-8 col-md-6">
+            <span className="product-category">{item.category}</span>
+            <h2 className="h6 fw-semibold mt-2">{item.title}</h2>
+            <p className="text-muted mb-1">
+              ₹ {Math.ceil(item.price * 70)} · Quantity {item.quantity || 1}
+            </p>
+            <p className="product-price mb-0">
+              ₹ {Math.ceil(item.price * 70) * (item.quantity || 1)}
+            </p>
+          </div>
+          <div className="col-12 col-md-4 d-flex justify-content-md-end">
+            <button
+              onClick={() => handleRemoveItem(item)}
+              className="btn btn-outline-dark btn-sm"
+            >
+              Remove item
+            </button>
+          </div>
         </div>
-      </div>
+      </article>
     ));
 
   const renderCheckoutButton = () => (
-    <div className="container">
-      <div className="row">
-        <NavLink to="/checkout" className="btn btn-primary btn-lg w-50 mx-auto">
-          Proceed To Checkout
-        </NavLink>
-      </div>
+    <div className="d-flex justify-content-end mt-4">
+      <NavLink to="/checkout" className="btn-premium">
+        Proceed to checkout
+      </NavLink>
     </div>
   );
 
   return (
-    <>
-      {cartItems.length === 0 && renderEmptyCart()}
-      {cartItems.length > 0 && renderCartItems()}
-      {cartItems.length > 0 && renderCheckoutButton()}
-    </>
+    <section className="container page-section">
+      <p className="eyebrow">Your selection</p>
+      <h1 className="page-title">Shopping bag</h1>
+      {cartItems.length === 0 ? (
+        <div className="content-panel p-4 p-md-5 text-center">
+          <h2 className="section-heading">Your bag is waiting.</h2>
+          <p className="section-subtitle">
+            Discover something you’ll love and it will appear here.
+          </p>
+          <NavLink to="/products" className="btn-premium mt-3">
+            Explore the collection
+          </NavLink>
+        </div>
+      ) : (
+        <>
+          {renderCartItems()}
+          {renderCheckoutButton()}
+        </>
+      )}
+    </section>
   );
 };
 
